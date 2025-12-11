@@ -1,11 +1,8 @@
-use ferris_says::say;
-use std::io::{stdout, BufWriter};
+use std::env::{args};
 
 fn main() {
-    let stdout = stdout();
-    let message = String::from("Hello, world!");
-    let width = message.chars().count();
+    let pattern = args().nth(1).expect("no pattern given");
+    let path = args().nth(2).expect("no path given");
 
-    let mut writer = BufWriter::new(stdout.lock());
-    say(&message, width, &mut writer).unwrap();
+    println!("pattern: {:?}, path: {:?}", pattern, path)
 }
